@@ -19,10 +19,19 @@ tableData.forEach((report) => {
 var button = d3.select("#filter-btn");
 
 // Select the form
-var form = d3.select(".form-group"); 
-// Create event handlers 
+var form = d3.select(".form-control"); 
+
+// Create event handlers
+// **********
+// First event when the button "Filter table" is pressed 
 button.on("click", runEnter);
-form.on("submit", runEnter);  
+
+// Second event when space or Enter is pressed
+form.on("keypress", function() {
+    if(d3.event.keyCode === 32 || d3.event.keyCode === 13){
+    runEnter();
+    };
+});
 
 // Complete the event handler function for the form
 function runEnter() {
